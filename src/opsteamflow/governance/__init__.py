@@ -8,8 +8,7 @@ from dataclasses import dataclass, field
 _PII_PATTERNS: dict[str, re.Pattern[str]] = {
     "EMAIL": re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"),
     "PHONE": re.compile(
-        r"(?<!\d)(?:\+?\d{1,3}[\s.-]?)?"
-        r"(?:\(?\d{2,4}\)?[\s.-]?){2,4}\d{2,4}(?!\d)"
+        r"(?<!\d)(?:\+?\d{1,3}[\s.-]?)?" r"(?:\(?\d{2,4}\)?[\s.-]?){2,4}\d{2,4}(?!\d)"
     ),
     "CREDIT_CARD": re.compile(r"(?<!\d)(?:\d[ -]?){13,16}(?!\d)"),
     "IBAN": re.compile(r"\b[A-Z]{2}\d{2}[A-Z0-9]{10,30}\b"),

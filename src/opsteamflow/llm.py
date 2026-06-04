@@ -31,7 +31,9 @@ class LLMClient(Protocol):
         temperature: float = ...,
     ) -> LLMResponse: ...
 
+
 # Real client
+
 
 class AnthropicClient:
     """Wraps the official anthropic SDK.
@@ -77,9 +79,7 @@ class AnthropicClient:
         if system:
             kwargs["system"] = system
         msg = self._client.messages.create(**kwargs)
-        text = "".join(
-            block.text for block in msg.content if block.type == "text"
-        )
+        text = "".join(block.text for block in msg.content if block.type == "text")
         return LLMResponse(
             text=text,
             model=self.model,
@@ -128,8 +128,7 @@ class FakeClient:
                 payload = {k: f"offline value for {k}" for k in keys}
             else:
                 payload = {
-                    "summary": self._first_context_sentence(prompt)
-                    or "no context provided",
+                    "summary": self._first_context_sentence(prompt) or "no context provided",
                     "confidence": 0.5,
                 }
             return self._wrap(json.dumps(payload), prompt)

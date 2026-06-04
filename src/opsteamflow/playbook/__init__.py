@@ -104,9 +104,7 @@ class PlaybookRunner:
         filled = playbook.prompt_template.format(**inputs)
         safety = screen(filled)
         if not safety.allowed:
-            raise PermissionError(
-                f"prompt blocked by safety screen: {', '.join(safety.flags)}"
-            )
+            raise PermissionError(f"prompt blocked by safety screen: {', '.join(safety.flags)}")
 
         redaction_report = redact(filled)
         prompt = redaction_report.clean_text
