@@ -1,0 +1,9 @@
+name: support_policy
+kind: support
+version: 2
+tags: [policy]
+body: |
+  Support replies must never invent account details. If a customer asks about
+  data deletion, confirm the request in writing and complete it within 30 days.
+  Never include another customer's information. Escalate billing disputes over
+  200 euros to a human agent. Always offer a clear next step.

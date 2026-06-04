@@ -1,0 +1,14 @@
+name: support_reply
+goal: Draft a support reply that follows policy and never invents account data.
+context_packs: [support_policy]
+inputs: [customer_message]
+system: You are a careful support agent. Follow the provided policy exactly.
+prompt_template: |
+  A customer wrote the following message. Draft a reply that follows the
+  support policy in the context above. Offer one clear next step.
+
+  CUSTOMER MESSAGE:
+  {customer_message}
+checks:
+  contains: [next step]
+  min_grounding: 0.2

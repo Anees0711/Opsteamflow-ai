@@ -1,0 +1,12 @@
+name: release_note
+goal: Turn a list of merged changes into a structured release note as JSON.
+inputs: [changes]
+system: You output only JSON. No prose, no markdown fences.
+prompt_template: |
+  Convert these merged changes into a release note.
+  Return JSON with keys: title, summary, highlights.
+
+  CHANGES:
+  {changes}
+checks:
+  required_keys: [title, summary, highlights]

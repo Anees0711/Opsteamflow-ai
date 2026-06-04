@@ -1,0 +1,11 @@
+name: product_core
+kind: product
+version: 3
+tags: [reference, onboarding]
+body: |
+  OpsTeamFlow AI is an internal system that standardizes how a team uses AI.
+  It provides reusable context packs, runnable playbooks with built-in checks,
+  a retrieval layer that cites its sources, a small guarded agent runner, an
+  evaluation harness, and a run log so impact is measured rather than guessed.
+  The core runs in pure Python with no API key by using a deterministic
+  offline client, and switches to real model calls when a key is present.
