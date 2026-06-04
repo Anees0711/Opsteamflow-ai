@@ -5,10 +5,11 @@ An operating system for how a team uses AI.
 Most teams now have AI tools. What they do not have is a shared, inspectable way
 of using them: the same prompt produces different quality in different hands, no
 one can say whether an output is grounded in real sources, sensitive data leaks
-into prompts by accident, and nobody can answer "is this actually saving us
+into prompts by accident, and nobody can answer "is this actually saving our
 time" with a number instead of a feeling.
+OpsTeamFlow AI is the layer that fixes that. 
 
-OpsTeamFlow AI is the layer that fixes that. It is a Python library (with an
+It is a Python library (with an
 optional HTTP API and dashboard) that gives a team six things that work
 together:
 
