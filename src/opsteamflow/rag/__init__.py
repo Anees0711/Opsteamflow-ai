@@ -53,7 +53,7 @@ class HashingEmbedder:
 
 
 def _cosine(left: list[float], right: list[float]) -> float:
-    return sum(x * y for x, y in zip(left, right))
+    return sum(x * y for x, y in zip(left, right, strict=True))
 
 
 @dataclass(frozen=True)
