@@ -1,0 +1,73 @@
+LLM client in use: FakeClient
+
+================================================================
+1. GOVERNANCE  (PII redaction + prompt safety)
+================================================================
+redacted: Email me at [EMAIL] or call +33 [PHONE], card [CREDIT_CARD].
+removed  : {'CREDIT_CARD': 1, 'EMAIL': 1, 'PHONE': 1}
+safety   : ['override', 'system_leak'] (blocked)
+
+================================================================
+2. CONTEXT PACKS  (versioned, fingerprinted)
+================================================================
+- product_core v3 [product] fp=1ee06ea8f97e ~111 tok
+- support_policy v2 [support] fp=a39f3047e7c5 ~72 tok
+
+================================================================
+3. PLAYBOOK  (release_note -> JSON, schema-checked)
+================================================================
+output: {"title": "offline value for title", "summary": "offline value for summary", "highlights": "offline value for highlights"}
+scores: {'schema': 1.0} passed: True
+
+================================================================
+4. RAG  (ingest handbook, ask, get citations)
+================================================================
+ingested 2 chunks
+answer  : [handbook#0] # Engineering Handbook (excerpt)
+cites   : ['handbook#0']
+
+================================================================
+5. AGENTS  (research -> write -> review, guarded)
+================================================================
+ran 3 agents; blocked=False
+final   : [fake:2bd25956] [researcher:scout]
+Deployment uses GitHub Actions and blocks merges on low eva
+
+================================================================
+6. EVAL SUITE  (regression gate)
+================================================================
+{
+  "passed": 1,
+  "total": 1,
+  "pass_rate": 1.0,
+  "cases": [
+    {
+      "name": "release_note_schema",
+      "value": 1.0,
+      "passed": true,
+      "reason": "all required keys present"
+    }
+  ]
+}
+
+================================================================
+7. ANALYTICS  (aggregate the run log)
+================================================================
+{
+  "runs": 1,
+  "actors": [
+    "demo"
+  ],
+  "by_workflow": {
+    "release_note": {
+      "runs": 1,
+      "passed": 1,
+      "pii_redactions": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "pass_rate": 1.0
+    }
+  },
+  "time_saved_seconds_total": 600.0,
+  "time_saved_runs_with_baseline": 1
+}
