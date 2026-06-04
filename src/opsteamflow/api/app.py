@@ -61,8 +61,8 @@ class Settings:
         self.api_key = os.environ.get("OPSTEAMFLOW_API_KEY")
         self.cors_origin = os.environ.get("OPSTEAMFLOW_CORS_ORIGIN", "http://localhost:3000")
 
-
-def require_api_key(settings: Settings):
+def require_api_key(settings: Settings) -> Callable[[str | None], None]:
+from collections.abc import Callable
     """Return a dependency that enforces an API key only when configured."""
 
     def dependency(x_api_key: str | None = Header(default=None)) -> None:
