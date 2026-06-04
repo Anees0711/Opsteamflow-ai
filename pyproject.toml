@@ -1,0 +1,42 @@
+[project]
+name = "opsteamflow-ai"
+version = "0.4.1"
+description = "Repeatable AI workflows for teams: context packs, playbooks, guardrails, RAG citations, evaluation, and run analytics."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = ["PyYAML>=6.0"]
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.39"]
+api = ["fastapi>=0.110", "uvicorn>=0.29", "pydantic>=2.6"]
+dev = ["pytest>=8.0", "ruff>=0.6.0", "black>=24.0"]
+all = ["anthropic>=0.39", "fastapi>=0.110", "uvicorn>=0.29", "pydantic>=2.6", "pytest>=8.0", "ruff>=0.6.0", "black>=24.0"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.black]
+line-length = 100
+target-version = ["py310"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests", "scripts"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "ANN"]
+ignore = ["ANN401"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["ANN201"]
+"scripts/*" = ["ANN201"]
